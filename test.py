@@ -25,7 +25,7 @@ timeout = sys.argv[4]
 def count_clients(ip) :
     try:
         # print(url)
-        page = requests.get('http://'+ip, auth=(username,password),timeout=timeout)
+        page = requests.get('http://'+ip, auth=(username,password),timeout=int(timeout))
         #print(page.text)
         parse_macs_hyphens = re.compile('xx:xx:xx:xx:[0-9A-F]{2}:[0-9A-F]{2}')
         result = parse_macs_hyphens.findall(page.text)
