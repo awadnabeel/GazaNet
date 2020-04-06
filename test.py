@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import sys
 import time
 import threading
 import base64
@@ -17,11 +18,13 @@ _LOGGER = logging.getLogger(__name__)
 HTTP_HEADER_X_REQUESTED_WITH = 'X-Requested-With'
 HTTP_HEADER_NO_CACHE = 'no-cache'
 
-
+ip_range = sys.argv[1]
+username = sys.argv[2]
+password = sys.argv[3]
 def count_clients(ip) :
     try:
         # print(url)
-        page = requests.get('http://'+ip, auth=('admin','gn123125'),timeout=5)
+        page = requests.get('http://'+ip, auth=(username,password),timeout=5)
         #print(page.text)
         parse_macs_hyphens = re.compile('xx:xx:xx:xx:[0-9A-F]{2}:[0-9A-F]{2}')
         result = parse_macs_hyphens.findall(page.text)
@@ -36,7 +39,7 @@ def count_clients(ip) :
 
 
 for host in range(1,255) :
-    ip = '172.16.110.'+ str(host)
+    ip = ip_range+'.'+ str(host)
     thrd = threading.Thread(target=count_clients,args=(ip,))
     thrd.start()
 # --------------------------------------
