@@ -14,7 +14,7 @@ HTTP_HEADER_NO_CACHE = 'no-cache'
 class DataCollector() :
     result = ''
     def __init__(self,ip_range,start_ip,end_ip,username,password,timeout) :
-        for host in range(start_ip,end_ip-1) :
+        for host in range(start_ip,end_ip+1) :
             ip = ip_range+'.'+ str(host)
             thrd = threading.Thread(target=self.count_clients,args=(ip,username,password,timeout))
             thrd.start()
