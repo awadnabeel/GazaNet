@@ -23,7 +23,7 @@ class DataCollector() :
         try:
 
             ping_time  =  ping(ip)
-            if(ping_time in None ):
+            if(ping_time is None ):
                 ping_time = -1
             else :
                 ping_time = ping_time * 1000
