@@ -12,6 +12,6 @@ while True:
         start_ip = range[1]
         end_ip = range[2]
         # print(network_part,start_ip,end_ip)
-        datacollector = data_collector.DataCollector(network_part,start_ip,end_ip, 'admin', 'gn123125', system_variables['timeout'])
+        datacollector = data_collector.DataCollector(network_part,start_ip,end_ip, 'admin', 'gn123125', int(system_variables['timeout']))
         time.sleep(3)
-    time.sleep(system_variables['timer'])
+    time.sleep(int(system_variables['timer']))
