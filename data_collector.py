@@ -21,7 +21,12 @@ class DataCollector() :
     def count_clients(self,ip,username,password,timeout) :
         result = []
         try:
-            ping_time  =  ping(ip) * 1000
+
+            ping_time  =  ping(ip)
+            if(ping_time in None ):
+                ping_time = -1
+            else :
+                ping_time = ping_time * 1000
             print(ip+'  ping = '+str(ping_time))
             if (ping_time is not None ):
                 # TO DO  store ping time
@@ -58,7 +63,7 @@ class DataCollector() :
                 dbutils.DB.insert(ip,ping_time,'null', 0,'null',0)
                 print(ip ,'is not reachable')
         except :
-            dbutils.DB.insert(ip,ping_time,'null', 0,'null',0)
+            dbutils.DB.insert(ip,-1,'null', 0,'null',0)
             result += ip + ';;'
                 # print(ip + ';;')
 
