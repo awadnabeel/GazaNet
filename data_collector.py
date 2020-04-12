@@ -52,7 +52,7 @@ class DataCollector() :
                             print(uptime_hours)
 
 
-                print(ip, ssid, client_count,uptime)
+                print(ip,ping_time, ssid, client_count,uptime)
                 dbutils.DB.insert(ip,ping_time,ssid, client_count,uptime,uptime_hours)
             else:
                 dbutils.DB.insert(ip,ping_time,None, 0,None,0)
