@@ -19,6 +19,7 @@ class DataCollector() :
             thrd = threading.Thread(target=self.count_clients,args=(ip,username,password,timeout))
             thrd.start()
     def count_clients(self,ip,username,password,timeout) :
+        result = []
         try:
             ping_time  =  ping(ip) * 1000
             if (ping_time is not None ):
