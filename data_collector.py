@@ -55,10 +55,10 @@ class DataCollector() :
                 # print(ip,ping_time, ssid, client_count,uptime)
                 dbutils.DB.insert(ip,ping_time,ssid, client_count,uptime,uptime_hours)
             else:
-                dbutils.DB.insert(ip,ping_time,None, 0,None,0)
+                dbutils.DB.insert(ip,ping_time,'null', 0,'null',0)
                 print(ip ,'is not reachable')
         except :
-            dbutils.DB.insert(ip,ping_time,None, 0,None,0)
+            dbutils.DB.insert(ip,ping_time,'null', 0,'null',0)
             result += ip + ';;'
                 # print(ip + ';;')
 
