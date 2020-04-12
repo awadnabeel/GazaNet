@@ -28,11 +28,11 @@ class DB:
     #         print("connection failed…")
 
     @staticmethod
-    def insert(ip,ssid,count,uptime,uptime_hours) :
+    def insert(ip,ping,ssid,count,uptime,uptime_hours) :
         myConnection = mysql.connector.connect(host=hostname, user=username, passwd=password, db=database)
         cur = myConnection.cursor()
 
-        sql = "INSERT INTO ch_outputs (ip ,ssid, client_count,uptime,uptime_hours) VALUES" \
-              " ('"+ip+"','"+ssid+"',"+str(count)+",'"+uptime+"'"+","+str(uptime_hours)+")"
+        sql = "INSERT INTO ch_outputs (ip,ping,ssid, client_count,uptime,uptime_hours) VALUES" \
+              " ('"+ip+"',"+ping+",'"+ssid+"',"+str(count)+",'"+uptime+"'"+","+str(uptime_hours)+")"
         cur.execute(sql)
         myConnection.commit()
