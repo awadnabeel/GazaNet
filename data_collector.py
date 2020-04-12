@@ -58,7 +58,8 @@ class DataCollector() :
                 dbutils.DB.insert(ip,ping_time,None, 0,None,0)
                 print(ip ,'is not reachable')
         except :
-                result += ip + ';;'
+            dbutils.DB.insert(ip,ping_time,None, 0,None,0)
+            result += ip + ';;'
                 # print(ip + ';;')
 
     # --------------------------------------
