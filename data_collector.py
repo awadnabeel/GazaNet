@@ -44,24 +44,22 @@ class DataCollector() :
                         uptime_days = uptime.split(',')[0].split('days')[0].strip()
                         uptime_hr = uptime.split(',')[1].split(':')[0].strip()
                         uptime_min = uptime.split(',')[1].split(':')[1].strip()
-                        print(uptime_days+' d '+uptime_hr+':'+uptime_min)
+                        # print(uptime_days+' d '+uptime_hr+':'+uptime_min)
                         uptime = uptime_days+' d '+uptime_hr+':'+uptime_min
                         try:
                             uptime_hours = int(uptime_days)*24 + int(uptime_hr)
-                            print(uptime_hours)
+                            # print(uptime_hours)
                         except:
                             uptime_hours = int(uptime_hr)
-                            print(uptime_hours)
-
-
-                print(ip,ping_time, ssid, client_count,uptime)
+                            # print(uptime_hours)
+                # print(ip,ping_time, ssid, client_count,uptime)
                 dbutils.DB.insert(ip,ping_time,ssid, client_count,uptime,uptime_hours)
             else:
                 dbutils.DB.insert(ip,ping_time,None, 0,None,0)
                 print(ip ,'is not reachable')
         except :
                 result += ip + ';;'
-                print(ip + ';;')
+                # print(ip + ';;')
 
     # --------------------------------------
     #| ip  |   ssid   | username | password |

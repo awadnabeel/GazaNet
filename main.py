@@ -10,6 +10,6 @@ while True:
         network_part = str(range[0]).split('.')[0]+'.'+str(range[0]).split('.')[1]+'.'+str(range[0]).split('.')[2]
         start_ip = range[1]
         end_ip = range[2]
-        print(network_part,start_ip,end_ip)
+        # print(network_part,start_ip,end_ip)
         datacollector = data_collector.DataCollector(network_part,start_ip,end_ip, 'admin', 'gn123125', 5)
     time.sleep(60)
