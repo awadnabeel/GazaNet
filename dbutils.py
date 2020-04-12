@@ -18,6 +18,18 @@ class DB:
             # print( network_ip , start_ip , end_ip  )
         return ranges
 
+    def get_system_variable(self) :
+        myConnection = mysql.connector.connect(host=hostname, user=username, passwd=password, db=database)
+        cur = myConnection.cursor()
+        cur.execute( "SELECT name , value FROM ch_system_variables" )
+        variables = []
+        for name , value  in cur.fetchall() :
+            variables[name] = value
+            # print( network_ip , start_ip , end_ip  )
+        return variables
+
+
+
     # def __init__(self):
     #     try :
     #         self.myConnection = mysql.connector.connect( host=hostname, user=username, passwd=password, db=database )
