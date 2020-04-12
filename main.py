@@ -14,4 +14,4 @@ while True:
         # print(network_part,start_ip,end_ip)
         datacollector = data_collector.DataCollector(network_part,start_ip,end_ip, 'admin', 'gn123125', int(system_variables['timeout']))
         time.sleep(3)
-    time.sleep(int(system_variables['timer']))
+    time.sleep(int(system_variables['timer']) * 60 )
