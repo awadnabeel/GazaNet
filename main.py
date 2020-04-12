@@ -12,5 +12,5 @@ while True:
         end_ip = range[2]
         # print(network_part,start_ip,end_ip)
         datacollector = data_collector.DataCollector(network_part,start_ip,end_ip, 'admin', 'gn123125', 5)
-        time.sleep(10)
+        time.sleep(3)
     time.sleep(60)
