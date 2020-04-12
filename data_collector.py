@@ -22,6 +22,7 @@ class DataCollector() :
         result = []
         try:
             ping_time  =  ping(ip) * 1000
+            print(ip+'  ping = '+str(ping_time))
             if (ping_time is not None ):
                 # TO DO  store ping time
                 page = requests.get('http://'+ip, auth=(username,password),timeout=int(timeout))
