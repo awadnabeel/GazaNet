@@ -33,6 +33,6 @@ class DB:
         cur = myConnection.cursor()
 
         sql = "INSERT INTO ch_outputs (ip,ping,ssid, client_count,uptime,uptime_hours) VALUES" \
-              " ('"+ip+"',"+ping+",'"+ssid+"',"+str(count)+",'"+uptime+"'"+","+str(uptime_hours)+")"
+              " ('"+ip+"',"+str(ping)+",'"+ssid+"',"+str(count)+",'"+uptime+"'"+","+str(uptime_hours)+")"
         cur.execute(sql)
         myConnection.commit()
