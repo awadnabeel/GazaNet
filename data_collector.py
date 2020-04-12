@@ -19,7 +19,7 @@ class DataCollector() :
             ip = ip_range+'.'+ str(host)
             thrd = threading.Thread(target=self.count_clients,args=(ip,username,password,timeout))
             thrd.start()
-            time.sleep(0.1)
+            time.sleep(0.05)
     def count_clients(self,ip,username,password,timeout) :
         result = []
         try:
