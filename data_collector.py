@@ -20,7 +20,7 @@ class DataCollector() :
             thrd.start()
     def count_clients(self,ip,username,password,timeout) :
         try:
-            ping_time  =  ping(ip)
+            ping_time  =  ping(ip) * 1000
             if (ping_time is not None ):
                 # TO DO  store ping time
                 page = requests.get('http://'+ip, auth=(username,password),timeout=int(timeout))
