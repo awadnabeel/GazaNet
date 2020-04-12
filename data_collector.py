@@ -20,7 +20,9 @@ class DataCollector() :
             thrd.start()
     def count_clients(self,ip,username,password,timeout) :
         try:
-            if (ping(ip) is not None ):
+            ping_time  =  ping(ip)
+            if (ping_time is not None ):
+                # TO DO  store ping time
                 page = requests.get('http://'+ip, auth=(username,password),timeout=int(timeout))
                 # print(page.text)
                 parse_macs_hyphens = re.compile('xx:xx:xx:xx:[0-9A-F]{2}:[0-9A-F]{2}')
@@ -51,8 +53,9 @@ class DataCollector() :
 
 
                 print(ip, ssid, client_count,uptime)
-                dbutils.DB.insert(ip, ssid, client_count,uptime,uptime_hours)
+                dbutils.DB.insert(ip,ping_time,ssid, client_count,uptime,uptime_hours)
             else:
+                dbutils.DB.insert(ip,ping_time,None, 0,None,0)
                 print(ip ,'is not reachable')
         except :
                 result += ip + ';;'
