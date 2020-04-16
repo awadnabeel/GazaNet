@@ -40,8 +40,8 @@ class DataCollector() :
                 client_count = len(result)
                 ssid = ''
                 for line in page.text.split('\n'):
-                    if line.__contains__('GazaNet') :
-                        ssid = 'GazaNet'+line.split('GazaNet')[1].split('125')[0]+'125'
+                    if line.__contains__('Gaza') :
+                        ssid = 'Gaza'+line.split('Gaza')[1].split('125')[0]+'125'
                                 # print (time+';'+ip + ';' + str(word).split('&')[0] + ';' + str(len(result)))
                 page2 = requests.get('http://'+ip+'/Status_Router.asp', auth=(username,password),timeout=int(timeout))
                 for line in page2.text.split('\n'):
