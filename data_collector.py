@@ -20,6 +20,7 @@ class DataCollector() :
             thrd = threading.Thread(target=self.count_clients,args=(ip,username,password,timeout))
             thrd.start()
             time.sleep(0.05)
+
     def count_clients(self,ip,username,password,timeout) :
         result = []
         try:
@@ -36,6 +37,7 @@ class DataCollector() :
                 # print(page.text)
                 parse_macs_hyphens = re.compile('xx:xx:xx:xx:[0-9A-F]{2}:[0-9A-F]{2}')
                 result = parse_macs_hyphens.findall(page.text)
+                client_count = len(result)
                 ssid = ''
                 for line in page.text.split('\n'):
                     if line.__contains__('ssid') :
@@ -43,7 +45,6 @@ class DataCollector() :
                             if i == 2 :
                                 ssid = str(word).split('&')[0]
                                 # print (time+';'+ip + ';' + str(word).split('&')[0] + ';' + str(len(result)))
-                                client_count = len(result)
                 page2 = requests.get('http://'+ip+'/Status_Router.asp', auth=(username,password),timeout=int(timeout))
                 for line in page2.text.split('\n'):
                     if line.__contains__('<span id="uptime">'):
