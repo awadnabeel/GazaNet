@@ -24,12 +24,11 @@ class DataCollector() :
     def count_clients(self,ip,username,password,timeout) :
         result = []
         try:
-
-            ping_time  =  ping(ip)
+            ping_time  =  ping(ip,timeout=10,unit='ms')
             if(ping_time is None ):
                 ping_time = -1
             else :
-                ping_time = ping_time * 1000
+                ping_time = ping_time
             print(ip+'  ping = '+str(ping_time))
             if (ping_time is not None ):
                 # TO DO  store ping time
