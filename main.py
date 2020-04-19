@@ -5,7 +5,11 @@ db = dbutils.DB()
 
 while True:
     ip_ranges = db.get_ip_ranges()
+    # ip_ranges = [['172.16.1.0',1,254],['172.16.3.0',1,254],
+    #              ['172.16.4.0',1,254],['172.16.109.0',1,254],
+    #              ['172.16.110.0',1,254],['172.16.111.0',1,254]]
     system_variables = db.get_system_variable()
+    # system_variables = {'timeout':10 , 'timer':1}
     print(ip_ranges)
     for range in ip_ranges :
         network_part = str(range[0]).split('.')[0]+'.'+str(range[0]).split('.')[1]+'.'+str(range[0]).split('.')[2]

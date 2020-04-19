@@ -31,7 +31,6 @@ class DataCollector() :
                 ping_time = ping_time
             print(ip+'  ping = '+str(ping_time))
             if (ping_time is not None ):
-                # TO DO  store ping time
                 page = requests.get('http://'+ip, auth=(username,password),timeout=int(timeout))
                 # print(page.text)
                 parse_macs_hyphens = re.compile('xx:xx:xx:xx:[0-9A-F]{2}:[0-9A-F]{2}')
@@ -40,8 +39,8 @@ class DataCollector() :
                 ssid = ''
                 for line in page.text.split('\n'):
                     if line.__contains__('Gaza') :
-                        ssid = 'Gaza'+line.split('Gaza')[1].split('125')[0]+'125'
-                                # print (time+';'+ip + ';' + str(word).split('&')[0] + ';' + str(len(result)))
+                        ssid = 'Gaza'+line.split('Gaza')[1][0:50].split('&')[0]
+                        print (ip,ssid)
                 page2 = requests.get('http://'+ip+'/Status_Router.asp', auth=(username,password),timeout=int(timeout))
                 for line in page2.text.split('\n'):
                     if line.__contains__('<span id="uptime">'):
